@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Renderer2, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-segments-that-change-height',
@@ -8,13 +8,11 @@ import { AfterViewInit, Component, Renderer2, ViewChild } from '@angular/core';
 export class SegmentsThatChangeHeightComponent implements AfterViewInit {
 
   @ViewChild('outerCard') outerCard: any;
-  outerCardMinHeight = '0px';
+  outerCardMinHeight = 0;
 
   numOfItems = 15;
 
-  constructor(
-    private renderer: Renderer2
-  ) { }
+  constructor() {}
 
   async ngAfterViewInit() {
     /**
@@ -37,6 +35,9 @@ export class SegmentsThatChangeHeightComponent implements AfterViewInit {
     this.numOfItems = value;
 
     // console.log('BEFORE timeout', this.outerCard.el.offsetHeight);
+    /**
+     * We have to wait a tick for the new height to be available.
+     */
     setTimeout(() => {
       // console.log('AFTER timeout', this.outerCard.el.offsetHeight);
       this.setOuterCardMinHeight();
@@ -45,21 +46,12 @@ export class SegmentsThatChangeHeightComponent implements AfterViewInit {
 
   setOuterCardMinHeight() {
     /**
-     * We set the card to the greater of it's last height
-     * or the new height. We are keeping track of it with
-     * outerCardMinHeight and then also setting the style.
+     * We set the card to the greater of it's last recorded
+     * height or the new height.
      */
-    this.outerCardMinHeight = `${
-      Math.max(
-        parseFloat(this.outerCardMinHeight),
-        this.outerCard.el.offsetHeight
-      )
-    }px`;
-
-    this.renderer.setStyle(
-      this.outerCard.el,
-      'min-height',
-      this.outerCardMinHeight
+    this.outerCardMinHeight = Math.max(
+      this.outerCardMinHeight,
+      this.outerCard.el.offsetHeight
     );
   }
 
