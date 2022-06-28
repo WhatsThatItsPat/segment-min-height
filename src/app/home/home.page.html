@@ -9,10 +9,9 @@
 <ion-content>
 
   <ion-card
-    *ngFor="let card of [].constructor(10)"
-    (click)="clickedACard()"
+    (click)="clickedTheWrongThing()"
   >
-    <ion-card-content>
+    <ion-card-content *ngFor="let card of [].constructor(10)">
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam voluptatibus fugit sit nemo ullam aperiam atque illo voluptates adipisci distinctio quas, optio harum eum ea illum natus dolore neque repudiandae.
     </ion-card-content>
   </ion-card>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -7,10 +8,20 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  constructor(
+    private toastController: ToastController
+  ) {}
 
-  clickedACard() {
-    console.log('clicked a card');
+  async clickedTheWrongThing() {
+    console.log('clicked the wrong thing');
+
+    const toast = await this.toastController.create({
+      message: 'Oops, you clicked on the card above the segment component.',
+      duration: 2000,
+      color: 'danger'
+    });
+    toast.present();
+
   }
 
 }
