@@ -1,0 +1,7 @@
+{
+  "name": "segment-min-height",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
