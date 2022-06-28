@@ -9,4 +9,8 @@ export class HomePage {
 
   constructor() {}
 
+  clickedACard() {
+    console.log('clicked a card');
+  }
+
 }
