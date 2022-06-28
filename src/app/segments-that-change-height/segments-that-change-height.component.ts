@@ -23,8 +23,14 @@ export class SegmentsThatChangeHeightComponent implements AfterViewInit {
     const {
       detail: { value }
     } = event as any;
-    console.log(value);
+    // console.log(value);
     this.numOfItems = value;
+
+    console.log('BEFORE timeout', this.el.nativeElement.offsetHeight);
+    setTimeout(() => {
+      console.log('AFTER timeout', this.el.nativeElement.offsetHeight);
+    });
+
   }
 
 }
