@@ -1,4 +1,4 @@
-<ion-card>
+<ion-card #outerCard>
   <ion-card-content>
 
     <ion-segment
@@ -6,10 +6,13 @@
       [value]="numOfItems"
     >
       <ion-segment-button value="15">
-        <ion-label>Tall</ion-label>
+        <ion-label>15</ion-label>
       </ion-segment-button>
       <ion-segment-button value="0">
-        <ion-label>Short</ion-label>
+        <ion-label>0</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="20">
+        <ion-label>20</ion-label>
       </ion-segment-button>
     </ion-segment>
     
