@@ -1,3 +1,23 @@
-<p>
-  segments-that-change-height works!
-</p>
+<ion-card>
+  <ion-card-content>
+
+    <ion-segment
+      (ionChange)="segmentChanged($event)"
+      [value]="numOfItems"
+    >
+      <ion-segment-button value="15">
+        <ion-label>Tall</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="0">
+        <ion-label>Short</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+    
+    numOfItems: {{numOfItems}}
+
+    <div class="item" *ngFor="let i of [].constructor(+numOfItems)">
+      item
+    </div>
+
+  </ion-card-content>
+</ion-card>
